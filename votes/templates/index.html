@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {# Load the tag library #}
+    {% load bootstrap3 %}
+
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <h1>Campagne Ensimag</h1>
+    <h2>Listes inscrites en base de donnée</h2>
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+    {% if listes %}
+        <ul>
+            {% for l in listes %}
+                {% if l.est_vote_blanc %}
+                    <li>{{ l.id }} <em>{{ l.nom }}</em> ({{ l.type }}) <img src="{{ l.logo }}" width="50px" height="50px"/> : {{ l.nombre_votes }}</li>
+                {% else %}
+                    <li>{{ l.id }} <span style="color: {{ l.liste_couleur }}">{{ l.nom }}</span> ({{ l.type }}) <img src="{{ l.logo }}" width="50px" height="50px"/> : {{ l.nombre_votes }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Pas de listes en base</p>
+    {% endif %}
+    </body>
+</html>
