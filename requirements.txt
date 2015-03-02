@@ -1,0 +1,6 @@
+Django
+django-bootstrap3
+django-import-export
+django-picklefield
+django-suit
+Pillow
