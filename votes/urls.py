@@ -9,7 +9,9 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', views.index, name='index'),
-    url(r'^(?P<liste_id>\d+)/$', views.detail, name='detail')
+    url(r'^(?P<liste_id>\d+)/$', views.detail, name='detail'),
+    url(r'^login/$', 'django.contrib.auth.views.login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout'),
 )
 
 if settings.DEBUG:

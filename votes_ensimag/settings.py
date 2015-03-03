@@ -52,6 +52,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+# Authentification des votants
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend','votes_ensimag.IntranetFilterAuthBackend.IntranetFilterAuthBackend',)
+
 ROOT_URLCONF = 'votes_ensimag.urls'
 
 WSGI_APPLICATION = 'votes_ensimag.wsgi.application'

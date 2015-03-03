@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 from django.utils.html import format_html
@@ -55,6 +56,9 @@ class Votant(models.Model):
     login = models.CharField(max_length=8, verbose_name='Login')
     apprenti = models.BooleanField(default=False, verbose_name='Apprenti')
     phelmag = models.BooleanField(default=False, verbose_name='Phelmag')
+
+    # Pour le lien avec les utilisateurs Django, non modifiable depuis l'admin
+    user = models.OneToOneField(User, null=True, blank=True, verbose_name='Utilisateur associé')#, editable=False)
 
     class Meta:
         ordering = ['annee', 'nom']

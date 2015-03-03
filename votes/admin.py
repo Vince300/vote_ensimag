@@ -1,6 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
 from import_export import resources
 import import_export.admin
 
@@ -27,6 +29,17 @@ class VoteAdmin(admin.ModelAdmin):
 
 class TypeListeAdmin(admin.ModelAdmin):
     list_display = ('nom', 'deux_tours')
+
+class VotantInline(admin.StackedInline):
+    model = Votant
+    can_delete = False
+    verbose_name_plural = 'Votants'
+
+class UserAdmin(UserAdmin):
+    inlines = (VotantInline,)
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
 
 admin.site.register(TypeListe, TypeListeAdmin)
 admin.site.register(Liste, ListeAdmin)
