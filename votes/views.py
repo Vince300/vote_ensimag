@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from votes.models import *
@@ -9,11 +10,7 @@ def index(request):
     context = {'listes' : listes}
     return render(request, 'index.html', context)
 
-def detail(request, liste_id):
-    try:
-        liste = Liste.objects.get(id=liste_id)
-        context = {'liste' : liste}
-    except Liste.DoesNotExist:
-        context = {}
-    finally:
-        return render(request, 'details.html', context)
+@login_required
+def bulletin(request):
+    context = {}
+    return render(request, 'bulletin.html', context)

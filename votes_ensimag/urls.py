@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'votes_ensimag.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^votes/', include('votes.urls')),
+    url(r'^votes/', include('votes.urls', namespace='votes')),
     url(r'^admin/', include(admin.site.urls)),
 )
 

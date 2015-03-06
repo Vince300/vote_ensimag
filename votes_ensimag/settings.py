@@ -110,3 +110,7 @@ MEDIA_URL = '/media/'
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
+
+# Authentification personnalisée
+LOGIN_URL = '/votes/login'
+LOGOUT_URL = '/votes/logout'
