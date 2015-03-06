@@ -11,8 +11,7 @@ Connexion
 {% endblock %}
 
 {% block bootstrap3_content %}
-<div class="container">
-  <form method="post" action="{% url 'votes:login' %}" class="form-signin">
+<form method="post" action="{% url 'votes:login' %}" class="form-signin">
     <h2 class="form-signin-heading">Veuillez vous identifier</h2>
     <p>Connectez vous avec vos identifiants Ensimag pour voter.</p>
     {% csrf_token %}
@@ -21,8 +20,7 @@ Connexion
         <button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Je veux voter !</button>
     {% endbuttons %}
     <input type="hidden" name="next" value="{{ next }}" />
-  </form>
+</form>
 
-</div> <!-- /container -->
 
 {% endblock %}

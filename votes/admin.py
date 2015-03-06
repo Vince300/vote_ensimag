@@ -15,8 +15,8 @@ class VotantResource(resources.ModelResource):
 class VotantAdmin(import_export.admin.ImportExportModelAdmin):
     resource_class = VotantResource
     search_fields = ('id', 'prenom', 'nom', 'annee', 'login', 'apprenti', 'phelmag')
-    list_filter = ('annee', 'apprenti', 'phelmag')
-    list_display = ('prenom', 'nom', 'annee', 'login', 'apprenti', 'phelmag')
+    list_filter = ('annee', 'a_vote', 'apprenti', 'phelmag')
+    list_display = ('prenom', 'nom', 'annee', 'login', 'a_vote', 'apprenti', 'phelmag')
 
 class ListeAdmin(admin.ModelAdmin):
     list_display = ('nom', 'color_box', 'logo', 'type', 'get_nombre_votes_1', 'get_nombre_votes_2')

@@ -113,4 +113,5 @@ TEMPLATE_DIRS = (
 
 # Authentification personnalisée
 LOGIN_URL = '/votes/login'
+LOGIN_REDIRECT_URL = '/votes/'
 LOGOUT_URL = '/votes/logout'
