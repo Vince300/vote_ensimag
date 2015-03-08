@@ -10,13 +10,13 @@ Bulletin de vote en ligne
 <div class="page-header">
 <h1>Bulletin de vote en ligne</h1>
 </div>
-    {% if can_vote %}
-<form method="post" action="{% url 'votes:login' %}">
-    <p>Sélectionnez vos choix de vote</p>
+<form method="post" action="{% url 'votes:bulletin' %}">
+    <p>Sélectionnez vos choix de vote.</p><p><em>Attention : le vote est irréversible et effectif dès envoi du bulletin.</em></p>
     {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button class="btn btn-lg btn-primary" type="submit" value="voter">Voter</button>
+    {% endbuttons %}
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
-    {% else %}
-    <p>Vous avez déjà voté.</p>
-    {% endif %}
 {% endblock %}
