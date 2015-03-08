@@ -20,13 +20,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '6+e)h3!xa3xo2a$h(qc&hkfz(c)(k*-ghiz^5qaep3l960fk88'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = False
+#DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
-#TEMPLATE_DEBUG = False
+#TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['votes.ensimag-b.de']
 
 
 # Application definition
