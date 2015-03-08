@@ -13,6 +13,8 @@ class VoteForm(forms.Form):
             if t.deux_tours:
                 self.fields["{}_2".format(t.nom)] = forms.ModelChoiceField(Liste.objects.filter(type=t), widget=forms.RadioSelect, empty_label=None, label="Second tour {}".format(t.nom))
 
+        confirmBox = forms.CheckboxInput("Je confirme mon vote.")
+
     def clean(self):
         # Données nettoyées
         cleaned_data = super(VoteForm, self).clean()
