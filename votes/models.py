@@ -66,7 +66,7 @@ class Votant(models.Model):
     a_vote = models.BooleanField(default=False, verbose_name='A voté')
 
     # Pour le lien avec les utilisateurs Django, non modifiable depuis l'admin
-    user = models.OneToOneField(User, null=True, blank=True, verbose_name='Utilisateur associé')#, editable=False)
+    user = models.OneToOneField(User, null=True, blank=True, verbose_name='Utilisateur associé', editable=False)
 
     class Meta:
         ordering = ['annee', 'nom']

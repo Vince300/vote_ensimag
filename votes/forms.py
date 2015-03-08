@@ -9,7 +9,7 @@ class VoteForm(forms.Form):
         types_liste = TypeListe.objects.all()
         self.user = user
         for t in types_liste:
-            self.fields["{}_1".format(t.nom)] = forms.ModelChoiceField(Liste.objects.filter(type=t), widget=forms.RadioSelect, empty_label=None, label="Premier tour {}".format(t.nom))
+            self.fields["{}_1".format(t.nom)] = forms.ModelChoiceField(Liste.objects.filter(type=t), widget=forms.RadioSelect, empty_label=None, label="Choix {}".format(t.nom))
             if t.deux_tours:
                 self.fields["{}_2".format(t.nom)] = forms.ModelChoiceField(Liste.objects.filter(type=t), widget=forms.RadioSelect, empty_label=None, label="Second tour {}".format(t.nom))
 
