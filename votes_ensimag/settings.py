@@ -20,10 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '6+e)h3!xa3xo2a$h(qc&hkfz(c)(k*-ghiz^5qaep3l960fk88'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
 DEBUG = False
 
-#TEMPLATE_DEBUG = True
 TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['votes.ensimag-b.de']
@@ -104,9 +102,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
+STATIC_ROOT = '/home/mehdi/www/cercle/votes/vote_ensimag/static'
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/Users/mehdi/PycharmProjects/votes_ensimag/media/'
+MEDIA_ROOT = '/home/mehdi/www/cercle/votes/vote_ensimag/media'
 MEDIA_URL = '/media/'
 
 TEMPLATE_DIRS = (

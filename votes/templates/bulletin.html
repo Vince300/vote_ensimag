@@ -11,7 +11,7 @@ Bulletin de vote en ligne
 <h1>Bulletin de vote en ligne</h1>
 </div>
 <form method="post" action="{% url 'votes:bulletin' %}">
-    <p>Sélectionnez vos choix de vote.</p><p><em>Attention : le vote est irréversible et effectif dès envoi du bulletin.</em></p>
+    <p>Sélectionnez vos choix de vote.</p><p><em style="color:#E81515;">Attention : le vote est irréversible et effectif dès envoi du bulletin.</em></p>
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}

@@ -34,11 +34,13 @@ def bulletin(request):
                 ipaddress = request.META.get('REMOTE_ADDR')
 
             # Support non assuré pour les votes à deux tours !
+            form.cleaned_data.pop('confirm_box', None)
             for f in form.cleaned_data:
                 vote = Vote.objects.create(liste=form.cleaned_data[f], votant=votant, ip=ipaddress, date=datetime.datetime.now(), est_second_tour=False)
 
             return render(request, 'succes.html')
         else:
+            form.fields["confirm_box"] = forms.BooleanField(label="Je confirme mon vote.", required=True)
             return render(request, 'bulletin.html', {'form' : form})
     else:
         form = VoteForm(request.user)

@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from votes.models import *
 
 class VoteForm(forms.Form):
+
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
         types_liste = TypeListe.objects.all()
@@ -12,12 +13,12 @@ class VoteForm(forms.Form):
             self.fields["{}_1".format(t.nom)] = forms.ModelChoiceField(Liste.objects.filter(type=t), widget=forms.RadioSelect, empty_label=None, label="Choix {}".format(t.nom))
             if t.deux_tours:
                 self.fields["{}_2".format(t.nom)] = forms.ModelChoiceField(Liste.objects.filter(type=t), widget=forms.RadioSelect, empty_label=None, label="Second tour {}".format(t.nom))
-
-        confirmBox = forms.BooleanField("Je confirme mon vote.")
+        self.fields["confirm_box"] = forms.BooleanField(label="Je confirme mon vote.", required=True)
 
     def clean(self):
         # Données nettoyées
         cleaned_data = super(VoteForm, self).clean()
+        self.fields.pop('confirm_box', None)
 
         # Vérifications supplémentaires sur l'utilisateur
         try:
