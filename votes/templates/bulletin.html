@@ -7,6 +7,9 @@ Bulletin de vote en ligne
 {% endblock %}
 
 {% block bootstrap3_content %}
+{% for liste in listes %}
+<div class="col-xs-3"><img src="{{ liste.logo }}" alt="{{ liste.nom }}" class="center-block" style="max-width:40%; heigth:auto;"></div>
+{% endfor %}
 <div class="page-header">
 <h1>Bulletin de vote en ligne</h1>
 </div>

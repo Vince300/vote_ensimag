@@ -15,4 +15,7 @@ Vote en ligne Campagne Ensimag
 <h1>Vote en ligne Campagne Ensimag</h1>
 <p>Bienvenue sur le système de vote en ligne pour la campagne Ensimag</p>
 </div>
+{% for liste in listes %}
+<div class="col-xs-3 col-md-3"><img src="{{ liste.logo }}" alt="{{ liste.nom }}" class="img-responsive center-block"><p style="text-align:center;">{{ liste.nom }}</p></div>
+{% endfor %}
 {% endblock %}

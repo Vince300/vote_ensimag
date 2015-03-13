@@ -8,11 +8,12 @@ urlpatterns = patterns('',
     # url(r'^$', 'votes_ensimag.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', views.index, name='index'),
-    url(r'^bulletin/$', views.bulletin, name='bulletin'),
-    url(r'^contact/$', views.contact, name='contact'),
-    url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/votes'}, name='logout'),
+    url(r'^$', views.termine, name='index'),
+    #url(r'^$', views.index, name='index'),
+    #url(r'^bulletin/$', views.bulletin, name='bulletin'),
+    #url(r'^contact/$', views.contact, name='contact'),
+    #url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
+    #url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/votes'}, name='logout'),
 )
 
 if settings.DEBUG:

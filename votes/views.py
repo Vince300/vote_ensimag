@@ -9,12 +9,16 @@ import datetime
 # Create your views here.
 
 def index(request):
-    listes = Liste.objects.order_by('type')
+    listes = Liste.objects.filter(est_vote_blanc=False).order_by('type')
     context = {'listes': listes}
     return render(request, 'index.html', context)
 
+def termine(request):
+    return render(request, 'termine.html')
+
 @login_required
 def bulletin(request):
+    listes = Liste.objects.filter(est_vote_blanc=False).order_by('type')
     if request.method == 'POST':
         form = VoteForm(request.user, request.POST)
         if form.is_valid():
@@ -41,10 +45,10 @@ def bulletin(request):
             return render(request, 'succes.html')
         else:
             form.fields["confirm_box"] = forms.BooleanField(label="Je confirme mon vote.", required=True)
-            return render(request, 'bulletin.html', {'form' : form})
+            return render(request, 'bulletin.html', {'form' : form, 'listes' : listes})
     else:
         form = VoteForm(request.user)
-        context = {'form' : form}
+        context = {'form' : form, 'listes' : listes}
         return render(request, 'bulletin.html', context)
 
 def contact(request):

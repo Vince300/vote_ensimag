@@ -31,7 +31,11 @@ class VoteForm(forms.Form):
         # Vérification des choix de vote
 
         # Construction de l'association (type de liste) -> (ensemble de listes)
-        listes = {cleaned_data[f].type: [] for f in self.fields}
+        try:
+            listes = {cleaned_data[f].type: [] for f in self.fields}
+        except KeyError:
+            raise ValidationError("Tous les champs doivent être remplis !")
+
         for f in self.fields:
             listes[cleaned_data[f].type].append(cleaned_data[f])
 
