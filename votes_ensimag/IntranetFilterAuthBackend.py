@@ -18,10 +18,10 @@ class IntranetFilterAuthBackend(object):
         # Si on a trouvé le votant, on essaie de se connecter à l'intranet Ensimag avec ses informations
         try:
             handler = req.HTTPBasicAuthHandler()
-            handler.add_password(realm='Intranet Ensimag', uri='http://intranet.ensimag.fr', user=username, passwd=password)
+            handler.add_password(realm='Intranet Ensimag', uri='https://intranet.ensimag.fr', user=username, passwd=password)
 
             opener=req.build_opener(handler)
-            opener.open('http://intranet.ensimag.fr/')
+            opener.open('https://intranet.ensimag.fr/')
         except req.HTTPError as e:
             # Mauvais nom d'utilisateur ou mot de passe : le serveur renvoie une erreur 401
             if e.code == 401:

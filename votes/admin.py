@@ -7,6 +7,8 @@ from import_export import resources
 import import_export.admin
 
 from votes.models import TypeListe, Liste, Vote, Votant
+from votes_ensimag import settings
+
 
 class VotantResource(resources.ModelResource):
     class Meta:
@@ -17,7 +19,9 @@ class VotantAdmin(import_export.admin.ImportExportModelAdmin):
     search_fields = ('id', 'prenom', 'nom', 'annee', 'login', 'apprenti', 'phelmag')
     list_filter = ('annee', 'a_vote', 'apprenti', 'phelmag')
     list_display = ('prenom', 'nom', 'annee', 'login', 'a_vote', 'apprenti', 'phelmag')
-    readonly_fields = ('prenom', 'nom', 'annee', 'login', 'apprenti', 'phelmag')
+
+    if not settings.DEBUG:
+        readonly_fields = ('prenom', 'nom', 'annee', 'login', 'apprenti', 'phelmag')
 
 class ListeAdmin(admin.ModelAdmin):
     list_display = ('nom', 'color_box', 'logo', 'type', 'get_nombre_votes_1', 'get_nombre_votes_2')
