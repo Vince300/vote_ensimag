@@ -1,3 +1,4 @@
+# coding=utf-8
 __author__ = 'mehdi'
 
 from django.contrib.auth.models import User
