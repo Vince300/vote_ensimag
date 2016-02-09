@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='vote',
             name='ip',
-            field=models.IPAddressField(verbose_name='Adresse IP'),
+            field=models.GenericIPAddressField(verbose_name='Adresse IP'),
             preserve_default=True,
         ),
         migrations.AlterField(

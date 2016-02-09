@@ -21,11 +21,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '6+e)h3!xa3xo2a$h(qc&hkfz(c)(k*-ghiz^5qaep3l960fk88'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DJANGO_ENV', 'production') == 'development'
 
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['votes.ensimag-b.de']
+if DEBUG:
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+else:
+    ALLOWED_HOSTS = ['votes.asso-ensimag.fr', 'votes.asso-ensimag.com']
 
 
 # Application definition
@@ -60,15 +63,26 @@ ROOT_URLCONF = 'votes_ensimag.urls'
 
 WSGI_APPLICATION = 'votes_ensimag.wsgi.application'
 
+# Templates config
+TEMPLATE_DIRS = [
+    os.path.join(BASE_DIR, 'votes', 'templates'),
+    os.path.join(BASE_DIR, 'templates')
+]
+
+TEMPLATE_CONTEXT_PROCESSORS =[
+    'django.contrib.auth.context_processors.auth',
+    'django.template.context_processors.debug',
+    'django.template.context_processors.i18n',
+    'django.template.context_processors.media',
+    'django.template.context_processors.static',
+    'django.template.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.request',
+]
+
 # -------------------------------------------------------------------------
 
 # Added for Django suit
-
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
-
-TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-    'django.core.context_processors.request',
-)
 
 SUIT_CONFIG = {
     'ADMIN_NAME': 'Campagne Ensimag'
@@ -103,15 +117,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_ROOT = '/home/mehdi/www/cercle/votes/vote_ensimag/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/home/mehdi/www/cercle/votes/vote_ensimag/media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates'),
-)
 
 # Authentification personnalisée
 LOGIN_URL = '/votes/login'

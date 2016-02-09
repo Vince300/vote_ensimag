@@ -81,7 +81,7 @@ class Votant(models.Model):
 class Vote(models.Model):
     liste = models.ForeignKey(Liste, verbose_name='Liste')
     votant = models.ForeignKey(Votant, verbose_name='Votant', null=True)
-    ip = models.IPAddressField(verbose_name='Adresse IP')
+    ip = models.GenericIPAddressField(verbose_name='Adresse IP')
     date = models.DateTimeField(verbose_name='Date et heure')
     est_second_tour = models.BooleanField(default=False, verbose_name='Second tour')
 
