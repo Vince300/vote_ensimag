@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import json
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -94,10 +95,7 @@ SUIT_CONFIG = {
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': json.loads(os.getenv('VOTE_ENSIMAG_DATABASE_URL'))
 }
 
 # Internationalization
