@@ -12,8 +12,13 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import json
+from datetime import datetime
+from pytz import timezone
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+TIME_ZONE = 'Europe/Paris'
+TIMEZONE = timezone(TIME_ZONE)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -31,6 +36,8 @@ if DEBUG:
 else:
     ALLOWED_HOSTS = ['vote.asso-ensimag.fr', 'vote.asso-ensimag.com']
 
+START_DATE = TIMEZONE.localize(datetime(2016, 2, 10, 8, 0, 0))
+END_DATE = TIMEZONE.localize(datetime(2016, 2, 10, 16, 0, 0))
 
 # Application definition
 
@@ -55,6 +62,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'votes_ensimag.middleware.DateTimeLimitMiddleware',
 )
 
 # Authentification des votants
@@ -102,15 +110,9 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 LANGUAGE_CODE = 'fr-fr'
-
-TIME_ZONE = 'Europe/Paris'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/

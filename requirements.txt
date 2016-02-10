@@ -4,3 +4,4 @@ django-import-export
 django-picklefield
 django-suit
 Pillow
+pytz
