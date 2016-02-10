@@ -36,8 +36,9 @@ if DEBUG:
 else:
     ALLOWED_HOSTS = ['vote.asso-ensimag.fr', 'vote.asso-ensimag.com']
 
-START_DATE = TIMEZONE.localize(datetime(2016, 2, 10, 8, 0, 0))
-END_DATE = TIMEZONE.localize(datetime(2016, 2, 10, 16, 0, 0))
+DATE_BYPASS_SECRET = os.getenv('VOTE_ENSIMAG_BYPASS', 'DEBUG')
+START_DATE = TIMEZONE.localize(datetime(2016, 3, 14, 9, 0, 0))
+END_DATE = TIMEZONE.localize(datetime(2016, 3, 14, 17, 0, 0))
 
 # Application definition
 
