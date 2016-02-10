@@ -29,7 +29,7 @@ TEMPLATE_DEBUG = False
 if DEBUG:
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 else:
-    ALLOWED_HOSTS = ['votes.asso-ensimag.fr', 'votes.asso-ensimag.com']
+    ALLOWED_HOSTS = ['vote.asso-ensimag.fr', 'vote.asso-ensimag.com']
 
 
 # Application definition
